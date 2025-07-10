@@ -1,0 +1,6 @@
+/Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/SumupDashboardLightweightApplication.java
+/Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/config/WebConfig.java
+/Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/controller/DashboardController.java
+/Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/controller/RootRedirectController.java
+/Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/model/TransactionDTO.java
+/Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/service/SumupService.java
