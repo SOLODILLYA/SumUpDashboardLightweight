@@ -11,17 +11,14 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/**", "/css/**", "/js/**", "/index.html").permitAll()
-                .anyRequest().authenticated()
-            )
-            .formLogin(form -> form
-                .defaultSuccessUrl("/sumup/dashboard", true)
-                .permitAll()
-            )
-            .logout(logout -> logout.permitAll());
-
+                .csrf().disable()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/**", "/css/**", "/js/**", "/index.html").permitAll()
+                        .anyRequest().authenticated())
+                .formLogin(form -> form
+                        .defaultSuccessUrl("/sumup/dashboard", true)
+                        .permitAll())
+                .logout(logout -> logout.permitAll());
 
         return http.build();
     }

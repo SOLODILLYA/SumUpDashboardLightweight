@@ -29,7 +29,8 @@ public class WebConfiguration implements WebMvcConfigurer {
                         Resource requestedResource = location.createRelative(resourcePath);
                         // If the requested resource exists and is readable, serve it.
                         // Otherwise, fall back to serving index.html for SPA routing.
-                        return requestedResource.exists() && requestedResource.isReadable() ? requestedResource : new ClassPathResource("/static/index.html");
+                        return requestedResource.exists() && requestedResource.isReadable() ? requestedResource
+                                : new ClassPathResource("/static/index.html");
                     }
                 });
     }
