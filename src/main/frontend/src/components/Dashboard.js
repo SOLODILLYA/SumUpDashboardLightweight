@@ -8,6 +8,7 @@ function Dashboard() {
   const [summary, setSummary] = useState(null);
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(10);
+  const [visibleItemAndComboCount, setVisibleItemAndComboCount] = useState(10);
 
   useEffect(() => {
     axios
@@ -85,11 +86,11 @@ function Dashboard() {
           <h2>Most Sold Items</h2>
           <Pie
             data={{
-              labels: summary.productSales.map((p) => p.name),
+              labels: summary.mostSoldProducts.map((p) => p.name),
               datasets: [
                 {
                   label: "Products Sold",
-                  data: summary.productSales.map((p) => p.quantity),
+                  data: summary.mostSoldProducts.map((p) => p.quantity),
                   backgroundColor: [
                     "#a29bfe", // lavender
                     "#6c5ce7", // soft indigo
@@ -126,10 +127,10 @@ function Dashboard() {
           <h2>Most Sold Combos</h2>
           <Pie
             data={{
-              labels: Object.keys(summary.productCombos),
+              labels: Object.keys(summary.mostSoldCombos),
               datasets: [
                 {
-                  data: Object.values(summary.productCombos),
+                  data: Object.values(summary.mostSoldCombos),
                   backgroundColor: [
                     "#6c5ce7",
                     "#636e72",
@@ -238,6 +239,65 @@ function Dashboard() {
           />
         </div>
       </div>
+      <div className="dual-table-wrapper">
+        {/* Most Sold Items Table */}
+        <div className="table-block">
+          <h2>Most Sold Items</h2>
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {summary.soldProducts
+                .slice(0, visibleItemAndComboCount)
+                .map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.name}</td>
+                    <td>{item.quantity}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Most Sold Combos Table */}
+        <div className="table-block">
+          <h2>Most Sold Combos</h2>
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Combo</th>
+                <th>Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(summary.soldCombos)
+                .slice(0, visibleItemAndComboCount)
+                .map(([combo, count], index) => (
+                  <tr key={index}>
+                    <td>{combo}</td>
+                    <td>{count}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {(visibleItemAndComboCount < summary.soldProducts.length ||
+        visibleItemAndComboCount < Object.keys(summary.soldCombos).length) && (
+        <div className="load-more-container">
+          <button
+            onClick={() => setVisibleItemAndComboCount((c) => c + 10)}
+            className="load-more-button"
+          >
+            Load More
+          </button>
+        </div>
+      )}
 
       <div className="transactions-section">
         <h2>Recent Transactions</h2>
@@ -262,12 +322,14 @@ function Dashboard() {
           </tbody>
         </table>
         {visibleCount < summary.transactions.length && (
-          <button
-            onClick={() => setVisibleCount((prev) => prev + 10)}
-            className="load-more-button"
-          >
-            Load More
-          </button>
+          <div className="load-more-container">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 10)}
+              className="load-more-button"
+            >
+              Load More
+            </button>
+          </div>
         )}
       </div>
     </div>
