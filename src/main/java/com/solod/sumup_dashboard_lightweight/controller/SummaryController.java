@@ -4,7 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -149,12 +152,53 @@ public class SummaryController {
                 })
                 .collect(Collectors.toList());
         productSales.sort((a, b) -> ((Integer) a.get("quantity")) - ((Integer) b.get("quantity")));
+        Map<String, Integer> topCombos = calculateTopCombos(transactions);
+        Map<String, Integer> reversedCombos = new LinkedHashMap<>();
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(topCombos.entrySet());
+        Collections.reverse(entries);
+        for (Map.Entry<String, Integer> entry : entries) {
+            reversedCombos.put(entry.getKey(), entry.getValue());
+        }
+        topCombos = reversedCombos;
+
         return Map.of(
                 "totalSales", Math.round(totalSales * 100.0) / 100.0,
                 "numTransactions", numTransactions,
                 "avgTransactionValue", Math.round(avgTransactionValue * 100.0) / 100.0,
                 "salesOverTime", salesOverTime,
                 "transactions", transactions,
-                "productSales", productSales);
+                "productSales", productSales,
+                "productCombos", topCombos);
+    }
+
+    private Map<String, Integer> calculateTopCombos(List<Map<String, Object>> transactions) {
+        Map<String, Integer> comboCount = new HashMap<>();
+        for (Map<String, Object> tx : transactions) {
+            List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
+            if (items == null || items.size() < 2)
+                continue;
+
+            List<String> names = items.stream()
+                    .map(i -> (String) i.get("name"))
+                    .distinct()
+                    .sorted()
+                    .toList();
+
+            for (int i = 0; i < names.size(); i++) {
+                for (int j = i + 1; j < names.size(); j++) {
+                    String comboKey = names.get(i) + " + " + names.get(j);
+                    comboCount.put(comboKey, comboCount.getOrDefault(comboKey, 0) + 1);
+                }
+            }
+        }
+
+        return comboCount.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .limit(10) // top 10 combos
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new));
     }
 }

@@ -80,6 +80,8 @@ function Dashboard() {
           }}
         />
       </div>
+
+      <h2>Most Sold Items</h2>
       <Pie
         data={{
           labels: summary.productSales.map((p) => p.name),
@@ -113,6 +115,36 @@ function Dashboard() {
               },
             },
           },
+        }}
+      />
+      <h2>Most Sold Combos</h2>
+      <Pie
+        data={{
+          labels: Object.keys(summary.productCombos),
+          datasets: [
+            {
+              data: Object.values(summary.productCombos),
+              backgroundColor: [
+                "#6c5ce7",
+                "#636e72",
+                "#00cec9",
+                "#ffeaa7",
+                "#e17055",
+                "#fd79a8",
+                "#fab1a0",
+                "#0984e3",
+                "#2d3436",
+                "#8e44ad",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        }}
+        options={{
+          plugins: {
+            legend: { display: false },
+          },
+          cutout: "60%",
         }}
       />
 
