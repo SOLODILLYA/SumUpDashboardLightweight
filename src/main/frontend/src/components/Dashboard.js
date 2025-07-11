@@ -7,6 +7,7 @@ import "./Dashboard.css";
 function Dashboard() {
   const [summary, setSummary] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(10);
 
   useEffect(() => {
     axios
@@ -250,7 +251,7 @@ function Dashboard() {
             </tr>
           </thead>
           <tbody>
-            {summary.transactions.map((tx) => (
+            {summary.transactions.slice(0, visibleCount).map((tx) => (
               <tr key={tx.id}>
                 <td>{tx.date}</td>
                 <td>{tx.amount}</td>
@@ -260,6 +261,14 @@ function Dashboard() {
             ))}
           </tbody>
         </table>
+        {visibleCount < summary.transactions.length && (
+          <button
+            onClick={() => setVisibleCount((prev) => prev + 10)}
+            className="load-more-button"
+          >
+            Load More
+          </button>
+        )}
       </div>
     </div>
   );

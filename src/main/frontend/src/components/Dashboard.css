@@ -116,3 +116,15 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: #fff;
 }
+.load-more-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.load-more-button:hover {
+  background-color: #5a4bcf;
+}
