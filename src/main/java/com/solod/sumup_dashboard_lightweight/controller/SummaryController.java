@@ -605,7 +605,7 @@ public class SummaryController {
 
     }
 
-    private List<Map<String, Object>> calculateSoldProducts(List<Map<String, Object>> transactions) {
+     List<Map<String, Object>> calculateSoldProducts(List<Map<String, Object>> transactions) {
         Map<String, Integer> productCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
@@ -629,7 +629,7 @@ public class SummaryController {
                 .collect(Collectors.toList());
     }
 
-    private Map<String, Integer> calculateSoldCombos(List<Map<String, Object>> transactions) {
+     Map<String, Integer> calculateSoldCombos(List<Map<String, Object>> transactions) {
         Map<String, Integer> comboCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
@@ -660,7 +660,7 @@ public class SummaryController {
                         LinkedHashMap::new));
     }
 
-    private Map<String, Integer> calculateMostSoldCombos(List<Map<String, Object>> transactions) {
+     Map<String, Integer> calculateMostSoldCombos(List<Map<String, Object>> transactions) {
         Map<String, Integer> comboCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
@@ -691,7 +691,7 @@ public class SummaryController {
                         LinkedHashMap::new));
     }
 
-    private List<Map<String, Object>> calculateMostSoldProducts(List<Map<String, Object>> transactions) {
+     List<Map<String, Object>> calculateMostSoldProducts(List<Map<String, Object>> transactions) {
         Map<String, Integer> productCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
@@ -716,7 +716,7 @@ public class SummaryController {
                 .collect(Collectors.toList());
     }
 
-    private List<Map<String, Object>> calculateLeastSoldProducts(List<Map<String, Object>> transactions) {
+     List<Map<String, Object>> calculateLeastSoldProducts(List<Map<String, Object>> transactions) {
         Map<String, Integer> productCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
@@ -741,7 +741,7 @@ public class SummaryController {
                 .collect(Collectors.toList());
     }
 
-    private Map<String, Integer> calculateLeastSoldCombos(List<Map<String, Object>> transactions) {
+     Map<String, Integer> calculateLeastSoldCombos(List<Map<String, Object>> transactions) {
         Map<String, Integer> comboCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
