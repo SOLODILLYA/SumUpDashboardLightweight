@@ -46,7 +46,7 @@ function Dashboard() {
             labels: summary.salesOverTime.map((pt) => pt.date),
             datasets: [
               {
-                label: "Daily Sales (€)",
+                label: "Sales (€)",
                 data: summary.salesOverTime.map((pt) => pt.amount),
                 borderColor: "#9b59b6",
                 backgroundColor: "#9b59b622",
