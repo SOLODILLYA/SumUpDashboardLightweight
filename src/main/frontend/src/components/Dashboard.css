@@ -12,7 +12,7 @@
 body {
   background-color: var(--bg-dark);
   color: var(--text-primary);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .dashboard-container {
@@ -57,6 +57,7 @@ body {
 .transactions-section {
   background-color: var(--bg-card);
   padding: 2rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
@@ -96,4 +97,21 @@ body {
   text-align: center;
   font-size: 1.2rem;
   color: var(--text-secondary);
+}
+
+.charts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.chart-block {
+  flex: 1 1 30rem;
+  background: #1e1e2f;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
 }

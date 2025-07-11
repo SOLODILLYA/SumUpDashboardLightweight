@@ -39,7 +39,6 @@ function Dashboard() {
           <strong>Average:</strong> €{summary.avgTransactionValue}
         </div>
       </div>
-
       <div className="chart-section">
         <h2>Sales Over Time</h2>
         <Line
@@ -80,73 +79,164 @@ function Dashboard() {
           }}
         />
       </div>
-
-      <h2>Most Sold Items</h2>
-      <Pie
-        data={{
-          labels: summary.productSales.map((p) => p.name),
-          datasets: [
-            {
-              label: "Products Sold",
-              data: summary.productSales.map((p) => p.quantity),
-              backgroundColor: [
-                "#a29bfe", // lavender
-                "#6c5ce7", // soft indigo
-                "#74b9ff", // light blue
-                "#00b894", // emerald green
-                "#55efc4", // mint
-                "#ffeaa7", // pastel yellow (warm accent)
-                "#fab1a0", // soft coral
-                "#fd79a8", // clean pink
-                "#e17055", // soft orange
-                "#636e72", // neutral gray
+      <div className="charts-grid">
+        <div className="chart-block">
+          <h2>Most Sold Items</h2>
+          <Pie
+            data={{
+              labels: summary.productSales.map((p) => p.name),
+              datasets: [
+                {
+                  label: "Products Sold",
+                  data: summary.productSales.map((p) => p.quantity),
+                  backgroundColor: [
+                    "#a29bfe", // lavender
+                    "#6c5ce7", // soft indigo
+                    "#74b9ff", // light blue
+                    "#00b894", // emerald green
+                    "#55efc4", // mint
+                    "#ffeaa7", // pastel yellow (warm accent)
+                    "#fab1a0", // soft coral
+                    "#fd79a8", // clean pink
+                    "#e17055", // soft orange
+                    "#636e72", // neutral gray
+                  ],
+                  borderWidth: 1,
+                },
               ],
-              borderWidth: 1,
-            },
-          ],
-        }}
-        options={{
-          cutout: "50%",
-          plugins: {
-            legend: {
-              display: false,
-              labels: {
-                color: "#fff",
+            }}
+            options={{
+              rotation: Math.PI,
+              //circumference: 2 * Math.PI,
+              cutout: "60%",
+              plugins: {
+                legend: {
+                  // display: false,
+                  labels: {
+                    color: "#fff",
+                  },
+                },
               },
-            },
-          },
-        }}
-      />
-      <h2>Most Sold Combos</h2>
-      <Pie
-        data={{
-          labels: Object.keys(summary.productCombos),
-          datasets: [
-            {
-              data: Object.values(summary.productCombos),
-              backgroundColor: [
-                "#6c5ce7",
-                "#636e72",
-                "#00cec9",
-                "#ffeaa7",
-                "#e17055",
-                "#fd79a8",
-                "#fab1a0",
-                "#0984e3",
-                "#2d3436",
-                "#8e44ad",
+            }}
+          />
+        </div>
+
+        <div className="chart-block">
+          <h2>Most Sold Combos</h2>
+          <Pie
+            data={{
+              labels: Object.keys(summary.productCombos),
+              datasets: [
+                {
+                  data: Object.values(summary.productCombos),
+                  backgroundColor: [
+                    "#6c5ce7",
+                    "#636e72",
+                    "#00cec9",
+                    "#ffeaa7",
+                    "#e17055",
+                    "#fd79a8",
+                    "#fab1a0",
+                    "#0984e3",
+                    "#2d3436",
+                    "#8e44ad",
+                  ],
+                  borderWidth: 1,
+                },
               ],
-              borderWidth: 1,
-            },
-          ],
-        }}
-        options={{
-          plugins: {
-            legend: { display: false },
-          },
-          cutout: "60%",
-        }}
-      />
+            }}
+            options={{
+              plugins: {
+                // legend: { display: false },
+                legend: {
+                  labels: {
+                    color: "#fff",
+                  },
+                },
+              },
+              cutout: "60%",
+            }}
+          />
+        </div>
+        <div className="chart-block">
+          <h2>Least Sold Items</h2>
+          <Pie
+            data={{
+              labels: summary.leastSoldProducts.map((p) => p.name),
+              datasets: [
+                {
+                  label: "Products Sold",
+                  data: summary.leastSoldProducts.map((p) => p.quantity),
+                  backgroundColor: [
+                    "#a29bfe", // lavender
+                    "#6c5ce7", // soft indigo
+                    "#74b9ff", // light blue
+                    "#00b894", // emerald green
+                    "#55efc4", // mint
+                    "#ffeaa7", // pastel yellow (warm accent)
+                    "#fab1a0", // soft coral
+                    "#fd79a8", // clean pink
+                    "#e17055", // soft orange
+                    "#636e72", // neutral gray
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            }}
+            options={{
+              rotation: Math.PI,
+              //circumference: 2 * Math.PI,
+              cutout: "60%",
+              plugins: {
+                legend: {
+                  // display: false,
+                  labels: {
+                    color: "#fff",
+                  },
+                },
+              },
+            }}
+          />
+        </div>
+
+        <div className="chart-block">
+          <h2>Least Sold Combos</h2>
+          <Pie
+            data={{
+              labels: Object.keys(summary.leastSoldCombos),
+              datasets: [
+                {
+                  data: Object.values(summary.leastSoldCombos),
+                  backgroundColor: [
+                    "#6c5ce7",
+                    "#636e72",
+                    "#00cec9",
+                    "#ffeaa7",
+                    "#e17055",
+                    "#fd79a8",
+                    "#fab1a0",
+                    "#0984e3",
+                    "#2d3436",
+                    "#8e44ad",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            }}
+            options={{
+              plugins: {
+                // legend: { display: false },
+                legend: {
+                  labels: {
+                    color: "#fff",
+                  },
+                },
+              },
+              cutout: "60%",
+            }}
+          />
+        </div>
+      </div>
 
       <div className="transactions-section">
         <h2>Recent Transactions</h2>

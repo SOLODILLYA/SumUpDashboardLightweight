@@ -131,44 +131,17 @@ public class SummaryController {
                 ? totalSales / numTransactions
                 : 0;
 
-        Map<String, Integer> productCount = new HashMap<>();
-        for (Map<String, Object> tx : transactions) {
-            List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
-            if (items != null) {
-                for (Map<String, Object> item : items) {
-                    String name = (String) item.get("name");
-                    int quantity = (int) item.get("quantity");
-                    productCount.put(name, productCount.getOrDefault(name, 0) + quantity);
-                }
-            }
-        }
-
-        List<Map<String, Object>> productSales = productCount.entrySet().stream()
-                .map(entry -> {
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("name", entry.getKey());
-                    map.put("quantity", entry.getValue());
-                    return map;
-                })
-                .collect(Collectors.toList());
-        productSales.sort((a, b) -> ((Integer) a.get("quantity")) - ((Integer) b.get("quantity")));
-        Map<String, Integer> topCombos = calculateTopCombos(transactions);
-        Map<String, Integer> reversedCombos = new LinkedHashMap<>();
-        List<Map.Entry<String, Integer>> entries = new ArrayList<>(topCombos.entrySet());
-        Collections.reverse(entries);
-        for (Map.Entry<String, Integer> entry : entries) {
-            reversedCombos.put(entry.getKey(), entry.getValue());
-        }
-        topCombos = reversedCombos;
-
         return Map.of(
                 "totalSales", Math.round(totalSales * 100.0) / 100.0,
                 "numTransactions", numTransactions,
                 "avgTransactionValue", Math.round(avgTransactionValue * 100.0) / 100.0,
                 "salesOverTime", salesOverTime,
                 "transactions", transactions,
-                "productSales", productSales,
-                "productCombos", topCombos);
+                "productSales", calculateProductSales(transactions),
+                "leastSoldProducts", calculateLeastSoldProducts(transactions),
+                "productCombos", calculateTopCombos(transactions),
+                "leastSoldCombos", calculateLeastSoldCombos(transactions)
+        );
     }
 
     private Map<String, Integer> calculateTopCombos(List<Map<String, Object>> transactions) {
@@ -201,4 +174,87 @@ public class SummaryController {
                         (e1, e2) -> e1,
                         LinkedHashMap::new));
     }
+
+    private List<Map<String, Object>> calculateProductSales(List<Map<String, Object>> transactions) {
+        Map<String, Integer> productCount = new HashMap<>();
+        for (Map<String, Object> tx : transactions) {
+            List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
+            if (items != null) {
+                for (Map<String, Object> item : items) {
+                    String name = (String) item.get("name");
+                    int quantity = (int) item.get("quantity");
+                    productCount.put(name, productCount.getOrDefault(name, 0) + quantity);
+                }
+            }
+        }
+
+        return productCount.entrySet().stream()
+                .sorted((a, b) -> b.getValue() - a.getValue())
+                .limit(10)
+                .map(entry -> {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("name", entry.getKey());
+                    map.put("quantity", entry.getValue());
+                    return map;
+                })
+                .collect(Collectors.toList());
+    }
+
+    private List<Map<String, Object>> calculateLeastSoldProducts(List<Map<String, Object>> transactions) {
+        Map<String, Integer> productCount = new HashMap<>();
+        for (Map<String, Object> tx : transactions) {
+            List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
+            if (items != null) {
+                for (Map<String, Object> item : items) {
+                    String name = (String) item.get("name");
+                    int quantity = (int) item.get("quantity");
+                    productCount.put(name, productCount.getOrDefault(name, 0) + quantity);
+                }
+            }
+        }
+
+        return productCount.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue()) // ascending order
+                .limit(10) // 10 least sold
+                .map(entry -> {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("name", entry.getKey());
+                    map.put("quantity", entry.getValue());
+                    return map;
+                })
+                .collect(Collectors.toList());
+    }
+
+    private Map<String, Integer> calculateLeastSoldCombos(List<Map<String, Object>> transactions) {
+        Map<String, Integer> comboCount = new HashMap<>();
+        for (Map<String, Object> tx : transactions) {
+            List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
+            if (items == null || items.size() < 2)
+                continue;
+
+            List<String> names = items.stream()
+                    .map(i -> (String) i.get("name"))
+                    .distinct()
+                    .sorted()
+                    .toList();
+
+            for (int i = 0; i < names.size(); i++) {
+                for (int j = i + 1; j < names.size(); j++) {
+                    String comboKey = names.get(i) + " + " + names.get(j);
+                    comboCount.put(comboKey, comboCount.getOrDefault(comboKey, 0) + 1);
+                }
+            }
+        }
+
+        return comboCount.entrySet().stream()
+                .filter(e -> e.getValue() >= 2) // only combos with 2 or more
+                .sorted(Map.Entry.comparingByValue()) // ascending
+                .limit(10) // 10 least sold
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new));
+    }
+
 }
