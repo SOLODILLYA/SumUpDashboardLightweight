@@ -118,8 +118,8 @@ body {
 }
 
 .load-more-button {
-  font-size: 1.1rem; 
-  padding: 0.75rem 1.5rem; 
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
   background-color: #6c5ce7;
   color: white;
   border: none;
@@ -182,4 +182,32 @@ body {
 .data-table tbody tr:hover {
   background-color: #2e2e44;
   transition: background-color 0.2s;
+}
+
+.grouping-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.grouping-buttons button {
+  background-color: #2d2d2d;
+  color: var(--accent-purple);
+  border: 1px solid #444;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-weight: 500;
+}
+
+.grouping-buttons button:hover {
+  background-color: #3a3a3a;
+  color: white;
+}
+
+.grouping-buttons button.active {
+  background-color: var(--accent-purple);
+  color: #fff;
+  font-weight: 600;
 }

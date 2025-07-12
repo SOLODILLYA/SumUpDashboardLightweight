@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Line, Pie } from "react-chartjs-2";
+import { format, parseISO } from "date-fns";
 import "chart.js/auto";
 import "./Dashboard.css";
 
@@ -9,6 +10,12 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(10);
   const [visibleItemAndComboCount, setVisibleItemAndComboCount] = useState(10);
+  const [grouping, setGrouping] = useState("1h");
+  let groupedData = [];
+
+  if (!loading && summary?.salesOverTime) {
+    groupedData = groupSales(summary.salesOverTime, grouping);
+  }
 
   useEffect(() => {
     axios
@@ -43,13 +50,33 @@ function Dashboard() {
       </div>
       <div className="chart-section">
         <h2>Sales Over Time</h2>
+        <div className="grouping-buttons">
+          <button
+            onClick={() => setGrouping("30m")}
+            className={grouping === "30m" ? "active" : ""}
+          >
+            30 min
+          </button>
+          <button
+            onClick={() => setGrouping("1h")}
+            className={grouping === "1h" ? "active" : ""}
+          >
+            1 hour
+          </button>
+          <button
+            onClick={() => setGrouping("1d")}
+            className={grouping === "1d" ? "active" : ""}
+          >
+            1 day
+          </button>
+        </div>
         <Line
           data={{
-            labels: summary.salesOverTime.map((pt) => pt.date),
+            labels: groupedData.map((pt) => pt.date),
             datasets: [
               {
                 label: "Sales (€)",
-                data: summary.salesOverTime.map((pt) => pt.amount),
+                data: groupedData.map((pt) => pt.amount),
                 borderColor: "#9b59b6",
                 backgroundColor: "#9b59b622",
                 fill: true,
@@ -64,7 +91,7 @@ function Dashboard() {
             plugins: {
               legend: {
                 labels: {
-                  color: "#00d1ff",
+                  color: "#f5f6fa",
                 },
               },
             },
@@ -334,6 +361,38 @@ function Dashboard() {
       </div>
     </div>
   );
+}
+function groupSales(sales, interval) {
+  const buckets = {};
+
+  sales.forEach((pt) => {
+    const date = parseISO(pt.date);
+    let bucketKey;
+
+    if (interval === "30m") {
+      const hour = date.getHours();
+      const half = date.getMinutes() < 30 ? "00" : "30";
+      bucketKey = `${format(date, "yyyy-MM-dd")} ${hour
+        .toString()
+        .padStart(2, "0")}:${half}`;
+    } else if (interval === "1h") {
+      bucketKey = `${format(date, "yyyy-MM-dd")} ${date
+        .getHours()
+        .toString()
+        .padStart(2, "0")}:00`;
+    } else {
+      bucketKey = format(date, "yyyy-MM-dd");
+    }
+
+    if (!buckets[bucketKey]) {
+      buckets[bucketKey] = 0;
+    }
+    buckets[bucketKey] += pt.amount;
+  });
+
+  return Object.entries(buckets)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, amount]) => ({ date: key, amount }));
 }
 
 export default Dashboard;
