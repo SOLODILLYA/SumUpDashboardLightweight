@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { Line, Pie } from "react-chartjs-2";
-import { format, parseISO } from "date-fns";
+import { format, parseISO, subDays, formatISO } from "date-fns";
 import "chart.js/auto";
 import "./Dashboard.css";
 
@@ -12,6 +14,8 @@ function Dashboard() {
   const [visibleItemAndComboCount, setVisibleItemAndComboCount] = useState(10);
   const [grouping, setGrouping] = useState("1h");
   const [activeChart, setActiveChart] = useState("amount");
+  const [startDate, setStartDate] = useState(formatISO(subDays(new Date(), 7))); // 7 days ago
+  const [endDate, setEndDate] = useState(formatISO(new Date())); // today
   const commonLineStyle = {
     borderColor: "#9b59b6",
     backgroundColor: "#9b59b622",
@@ -55,6 +59,24 @@ function Dashboard() {
   }, []);
 
   if (loading) return <p className="loading">Loading dashboard...</p>;
+  const fetchFilteredData = () => {
+    setLoading(true);
+    axios
+      .get("http://localhost:8080/api/summary", {
+        params: {
+          start: startDate,
+          end: endDate,
+        },
+      })
+      .then((res) => {
+        setSummary(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching filtered summary:", err);
+        setLoading(false);
+      });
+  };
 
   return (
     <div className="dashboard-container">
@@ -71,6 +93,38 @@ function Dashboard() {
           <strong>Average:</strong> €{summary.avgTransactionValue}
         </div>
       </div>
+      <div className="date-filter">
+        <div className="date-picker-group">
+          <label htmlFor="from-date">From:</label>
+          <DatePicker
+            id="from-date"
+            selected={new Date(startDate)}
+            onChange={(date) =>
+              setStartDate(date.toISOString().slice(0, 10) + "T00:00:00")
+            }
+            dateFormat="dd-MM-yyyy"
+            className="custom-datepicker"
+          />
+        </div>
+
+        <div className="date-picker-group">
+          <label htmlFor="to-date">To:</label>
+          <DatePicker
+            id="to-date"
+            selected={new Date(endDate)}
+            onChange={(date) =>
+              setEndDate(date.toISOString().slice(0, 10) + "T23:59:59")
+            }
+            dateFormat="dd-MM-yyyy"
+            className="custom-datepicker"
+          />
+        </div>
+
+        <button onClick={fetchFilteredData} className="filter-button">
+          Apply Filter
+        </button>
+      </div>
+
       <div className="chart-section">
         <div className="grouping-buttons">
           <button
@@ -394,6 +448,27 @@ function Dashboard() {
 function groupSales(sales, interval) {
   const buckets = {};
 
+  const uniqueDates = Array.from(
+    new Set(sales.map((pt) => format(parseISO(pt.date), "dd-MM-yyyy")))
+  );
+
+  uniqueDates.forEach((dateStr) => {
+    for (let h = 6; h < 21; h++) {
+      const hour = h.toString().padStart(2, "0");
+      if (interval === "30m") {
+        buckets[`${dateStr} ${hour}:00`] = 0;
+        buckets[`${dateStr} ${hour}:30`] = 0;
+      } else if (interval === "1h") {
+        buckets[`${dateStr} ${hour}:00`] = 0;
+      }
+    }
+
+    if (interval === "1d") {
+      buckets[dateStr] = 0;
+    }
+  });
+
+  // Step 3: Fill in actual sales
   sales.forEach((pt) => {
     const date = parseISO(pt.date);
     let bucketKey;

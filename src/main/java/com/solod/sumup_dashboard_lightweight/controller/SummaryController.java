@@ -3,7 +3,10 @@ package com.solod.sumup_dashboard_lightweight.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -15,10 +18,14 @@ import java.util.stream.Collectors;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class SummaryController {
-
     @GetMapping("/api/summary")
-    public Map<String, Object> getSummary() {
-        List<Map<String, Object>> transactions = List.of(
+    public Map<String, Object> getSummary(
+            @RequestParam(value = "start", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+
+            @RequestParam(value = "end", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
+        LocalDateTime from = (start != null) ? start : LocalDateTime.now().minusDays(7);
+        LocalDateTime to = (end != null) ? end : LocalDateTime.now();
+        List<Map<String, Object>> allTransactions = List.of(
                 Map.of(
                         "id", "tx0001",
                         "date", "2025-07-06T13:15",
@@ -563,6 +570,15 @@ public class SummaryController {
                                 Map.of("name", "Americano", "quantity", 2, "price", 2.8),
                                 Map.of("name", "Bagel", "quantity", 2, "price", 3.0),
                                 Map.of("name", "Granola Bowl", "quantity", 2, "price", 4.8))));
+
+        List<Map<String, Object>> transactions = allTransactions.stream()
+                .filter(tx -> {
+                    String dateStr = (String) tx.get("date");
+                    LocalDateTime txDate = LocalDateTime.parse(dateStr);
+                    return !txDate.isBefore(from) && !txDate.isAfter(to);
+                })
+                .collect(Collectors.toList());
+
         Map<String, Double> salesMap = transactions.stream()
                 .collect(Collectors.groupingBy(
                         tx -> (String) tx.get("date"),
@@ -605,7 +621,7 @@ public class SummaryController {
 
     }
 
-     List<Map<String, Object>> calculateSoldProducts(List<Map<String, Object>> transactions) {
+    List<Map<String, Object>> calculateSoldProducts(List<Map<String, Object>> transactions) {
         Map<String, Integer> productCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
@@ -629,7 +645,7 @@ public class SummaryController {
                 .collect(Collectors.toList());
     }
 
-     Map<String, Integer> calculateSoldCombos(List<Map<String, Object>> transactions) {
+    Map<String, Integer> calculateSoldCombos(List<Map<String, Object>> transactions) {
         Map<String, Integer> comboCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
@@ -660,7 +676,7 @@ public class SummaryController {
                         LinkedHashMap::new));
     }
 
-     Map<String, Integer> calculateMostSoldCombos(List<Map<String, Object>> transactions) {
+    Map<String, Integer> calculateMostSoldCombos(List<Map<String, Object>> transactions) {
         Map<String, Integer> comboCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
@@ -691,7 +707,7 @@ public class SummaryController {
                         LinkedHashMap::new));
     }
 
-     List<Map<String, Object>> calculateMostSoldProducts(List<Map<String, Object>> transactions) {
+    List<Map<String, Object>> calculateMostSoldProducts(List<Map<String, Object>> transactions) {
         Map<String, Integer> productCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
@@ -716,7 +732,7 @@ public class SummaryController {
                 .collect(Collectors.toList());
     }
 
-     List<Map<String, Object>> calculateLeastSoldProducts(List<Map<String, Object>> transactions) {
+    List<Map<String, Object>> calculateLeastSoldProducts(List<Map<String, Object>> transactions) {
         Map<String, Integer> productCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
@@ -741,7 +757,7 @@ public class SummaryController {
                 .collect(Collectors.toList());
     }
 
-     Map<String, Integer> calculateLeastSoldCombos(List<Map<String, Object>> transactions) {
+    Map<String, Integer> calculateLeastSoldCombos(List<Map<String, Object>> transactions) {
         Map<String, Integer> comboCount = new HashMap<>();
         for (Map<String, Object> tx : transactions) {
             List<Map<String, Object>> items = (List<Map<String, Object>>) tx.get("items");
