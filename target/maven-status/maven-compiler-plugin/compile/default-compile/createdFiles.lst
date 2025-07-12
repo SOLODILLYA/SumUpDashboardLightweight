@@ -1,6 +1,6 @@
 com/solod/sumup_dashboard_lightweight/SumupDashboardLightweightApplication.class
-com/solod/sumup_dashboard_lightweight/config/WebConfiguration$1.class
 com/solod/sumup_dashboard_lightweight/service/SumupService.class
-com/solod/sumup_dashboard_lightweight/config/WebConfiguration.class
 com/solod/sumup_dashboard_lightweight/controller/SummaryController.class
+com/solod/sumup_dashboard_lightweight/config/WebConfiguration$1.class
+com/solod/sumup_dashboard_lightweight/config/WebConfiguration.class
 com/solod/sumup_dashboard_lightweight/config/WebSecurityConfig.class

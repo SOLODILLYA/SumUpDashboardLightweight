@@ -12,6 +12,14 @@ function Dashboard() {
   const [visibleItemAndComboCount, setVisibleItemAndComboCount] = useState(10);
   const [grouping, setGrouping] = useState("1h");
   const [activeChart, setActiveChart] = useState("amount");
+  const commonLineStyle = {
+    borderColor: "#9b59b6",
+    backgroundColor: "#9b59b622",
+    fill: true,
+    tension: 0.3,
+    pointRadius: 4,
+    pointHoverRadius: 6,
+  };
   let groupedData = [];
   let groupedSalesCount = [];
 
@@ -54,7 +62,10 @@ function Dashboard() {
       <div className="chart-section">
         <div className="grouping-buttons">
           <button
-            onClick={() => setActiveChart("amount")}
+            onClick={() => {
+              if (grouping === "weekday+time") setGrouping("1d");
+              setActiveChart("amount");
+            }}
             className={activeChart === "amount" ? "active" : ""}
           >
             Show Sales Amount
@@ -90,6 +101,14 @@ function Dashboard() {
           >
             1 day
           </button>
+          {activeChart === "count" ? (
+            <button
+              onClick={() => setGrouping("weekday+time")}
+              className={grouping === "weekday+time" ? "active" : ""}
+            >
+              Weekday + Time
+            </button>
+          ) : null}
         </div>
         {activeChart === "amount" ? (
           <Line
@@ -99,12 +118,7 @@ function Dashboard() {
                 {
                   label: "Sales (€)",
                   data: groupedData.map((pt) => pt.amount),
-                  borderColor: "#9b59b6",
-                  backgroundColor: "#9b59b622",
-                  fill: true,
-                  tension: 0.3,
-                  pointRadius: 4,
-                  pointHoverRadius: 6,
+                  ...commonLineStyle,
                 },
               ],
             }}
@@ -127,12 +141,7 @@ function Dashboard() {
                 {
                   label: "Number of Sales",
                   data: groupedSalesCount.map((pt) => pt.count),
-                  borderColor: "#9b59b6",
-                  backgroundColor: "#9b59b622",
-                  fill: true,
-                  tension: 0.3,
-                  pointRadius: 4,
-                  pointHoverRadius: 6,
+                  ...commonLineStyle,
                 },
               ],
             }}
@@ -449,50 +458,65 @@ function groupSales(sales, interval) {
 
 function groupSalesCount(sales, interval) {
   const buckets = {};
+  const weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
 
   if (interval === "1d") {
-    // Pre-fill all weekdays
-    [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ].forEach((day) => (buckets[day] = 0));
+    weekdays.forEach((day) => (buckets[day] = 0));
   }
 
-  if (interval === "1h") {
-    // Pre-fill 24 hours
+  if (interval === "1h" || interval === "30m") {
     for (let h = 6; h < 21; h++) {
       const hour = h.toString().padStart(2, "0");
-      buckets[`${hour}:00`] = 0;
+      if (interval === "1h") {
+        buckets[`${hour}:00`] = 0;
+      } else {
+        buckets[`${hour}:00`] = 0;
+        buckets[`${hour}:30`] = 0;
+      }
     }
   }
 
-  if (interval === "30m") {
-    // Pre-fill 48 half-hour slots
-    for (let h = 6; h < 21; h++) {
-      const hour = h.toString().padStart(2, "0");
-      buckets[`${hour}:00`] = 0;
-      buckets[`${hour}:30`] = 0;
-    }
+  if (interval === "weekday+time") {
+    weekdays.forEach((day) => {
+      for (let h = 6; h < 21; h++) {
+        const hour = h.toString().padStart(2, "0");
+        buckets[`${day} ${hour}:00`] = 0;
+        buckets[`${day} ${hour}:30`] = 0;
+      }
+    });
   }
 
   sales.forEach((pt) => {
     const date = parseISO(pt.date);
+    const weekday = format(date, "EEEE");
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+
     let bucketKey;
 
-    if (interval === "30m") {
-      const hour = date.getHours();
-      const half = date.getMinutes() < 30 ? "00" : "30";
-      bucketKey = `${hour.toString().padStart(2, "0")}:${half}`;
+    if (interval === "1d") {
+      bucketKey = weekday;
     } else if (interval === "1h") {
-      bucketKey = `${date.getHours().toString().padStart(2, "0")}:00`;
+      bucketKey = `${hour.toString().padStart(2, "0")}:00`;
+    } else if (interval === "30m") {
+      const half = minute < 30 ? "00" : "30";
+      bucketKey = `${hour.toString().padStart(2, "0")}:${half}`;
+    } else if (interval === "weekday+time") {
+      const half = minute < 30 ? "00" : "30";
+      bucketKey = `${weekday} ${hour.toString().padStart(2, "0")}:${half}`;
     } else {
       bucketKey = format(date, "EEEE");
     }
+
+    if (!bucketKey) return;
 
     if (!buckets[bucketKey]) {
       buckets[bucketKey] = 0;
@@ -500,28 +524,25 @@ function groupSalesCount(sales, interval) {
     buckets[bucketKey] += 1;
   });
 
-  // Sort keys by time or by weekday
   let sortedKeys;
   if (interval === "1d") {
-    sortedKeys = [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ];
-  } else {
+    sortedKeys = weekdays;
+  } else if (interval === "weekday+time") {
     sortedKeys = Object.keys(buckets).sort((a, b) => {
-      // Sort time values like "13:30", "14:00" properly
-      return a.localeCompare(b);
+      const [dayA, timeA] = a.split(" ");
+      const [dayB, timeB] = b.split(" ");
+      const idxA = weekdays.indexOf(dayA);
+      const idxB = weekdays.indexOf(dayB);
+      if (idxA !== idxB) return idxA - idxB;
+      return timeA.localeCompare(timeB);
     });
+  } else {
+    sortedKeys = Object.keys(buckets).sort((a, b) => a.localeCompare(b));
   }
 
   return sortedKeys.map((key) => ({
     date: key,
-    count: buckets[key] ?? 0,
+    count: buckets[key],
   }));
 }
 
