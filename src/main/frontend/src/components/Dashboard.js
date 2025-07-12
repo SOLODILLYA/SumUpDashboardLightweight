@@ -20,6 +20,18 @@ function Dashboard() {
     pointRadius: 4,
     pointHoverRadius: 6,
   };
+  const chartColors = [
+    "#a29bfe", // lavender
+    "#6c5ce7", // soft indigo
+    "#74b9ff", // light blue
+    "#00b894", // emerald green
+    "#55efc4", // mint
+    "#ffeaa7", // pastel yellow (warm accent)
+    "#fab1a0", // soft coral
+    "#fd79a8", // clean pink
+    "#e17055", // soft orange
+    "#636e72", // neutral gray
+  ];
   let groupedData = [];
   let groupedSalesCount = [];
 
@@ -178,18 +190,7 @@ function Dashboard() {
                 {
                   label: "Products Sold",
                   data: summary.mostSoldProducts.map((p) => p.quantity),
-                  backgroundColor: [
-                    "#a29bfe", // lavender
-                    "#6c5ce7", // soft indigo
-                    "#74b9ff", // light blue
-                    "#00b894", // emerald green
-                    "#55efc4", // mint
-                    "#ffeaa7", // pastel yellow (warm accent)
-                    "#fab1a0", // soft coral
-                    "#fd79a8", // clean pink
-                    "#e17055", // soft orange
-                    "#636e72", // neutral gray
-                  ],
+                  backgroundColor: chartColors,
                   borderWidth: 1,
                 },
               ],
@@ -218,18 +219,7 @@ function Dashboard() {
               datasets: [
                 {
                   data: Object.values(summary.mostSoldCombos),
-                  backgroundColor: [
-                    "#6c5ce7",
-                    "#636e72",
-                    "#00cec9",
-                    "#ffeaa7",
-                    "#e17055",
-                    "#fd79a8",
-                    "#fab1a0",
-                    "#0984e3",
-                    "#2d3436",
-                    "#8e44ad",
-                  ],
+                  backgroundColor: chartColors,
                   borderWidth: 1,
                 },
               ],
@@ -256,18 +246,7 @@ function Dashboard() {
                 {
                   label: "Products Sold",
                   data: summary.leastSoldProducts.map((p) => p.quantity),
-                  backgroundColor: [
-                    "#a29bfe", // lavender
-                    "#6c5ce7", // soft indigo
-                    "#74b9ff", // light blue
-                    "#00b894", // emerald green
-                    "#55efc4", // mint
-                    "#ffeaa7", // pastel yellow (warm accent)
-                    "#fab1a0", // soft coral
-                    "#fd79a8", // clean pink
-                    "#e17055", // soft orange
-                    "#636e72", // neutral gray
-                  ],
+                  backgroundColor: chartColors,
                   borderWidth: 1,
                 },
               ],
@@ -296,18 +275,7 @@ function Dashboard() {
               datasets: [
                 {
                   data: Object.values(summary.leastSoldCombos),
-                  backgroundColor: [
-                    "#6c5ce7",
-                    "#636e72",
-                    "#00cec9",
-                    "#ffeaa7",
-                    "#e17055",
-                    "#fd79a8",
-                    "#fab1a0",
-                    "#0984e3",
-                    "#2d3436",
-                    "#8e44ad",
-                  ],
+                  backgroundColor: chartColors,
                   borderWidth: 1,
                 },
               ],

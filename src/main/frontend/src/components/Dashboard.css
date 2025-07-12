@@ -7,7 +7,15 @@
   --accent-cyan: #00d1ff;
   --accent-pink: #ff4081;
   --accent-purple: #9b59b6;
+  --accent-purple-light: #5a4bcf;
+  --neutral-gray: #2d2d2d;
+  --neutral-gray-hover: #3a3a3a;
+  --neutral-border: #444;
   --border-color: #393953;
+  --bg-table-header: #34344d;
+  --bg-table-hover: #2e2e44;
+  --shadow-dark: rgba(0, 0, 0, 0.4);
+  --shadow-soft: rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -44,7 +52,7 @@ body {
   padding: 1rem 1.5rem;
   border-radius: 12px;
   color: var(--text-primary);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 10px var(--shadow-dark);
   border: 1px solid var(--border-color);
   transition: transform 0.2s ease;
 }
@@ -61,7 +69,7 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 10px var(--shadow-dark);
   border: 1px solid var(--border-color);
 }
 
@@ -85,12 +93,12 @@ body {
 }
 
 .transactions-table th {
-  background-color: #34344d;
+  background-color: var(--bg-table-header);
   color: var(--text-secondary);
 }
 
 .transactions-table tbody tr:hover {
-  background-color: #2e2e44;
+  background-color: var(--bg-table-hover);
   transition: background-color 0.2s;
 }
 
@@ -110,17 +118,17 @@ body {
 
 .chart-block {
   flex: 1 1 30rem;
-  background: #1e1e2f;
+  background: var(--bg-dark);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  color: #fff;
+  box-shadow: 0 0 10px var(--shadow-soft);
+  color: var(--text-primary);
 }
 
 .load-more-button {
   font-size: 1.1rem;
   padding: 0.75rem 1.5rem;
-  background-color: #6c5ce7;
+  background-color: var(--accent-purple);
   color: white;
   border: none;
   border-radius: 5px;
@@ -128,7 +136,7 @@ body {
 }
 
 .load-more-button:hover {
-  background-color: #5a4bcf;
+  background-color: var(--accent-purple-light);
 }
 
 .load-more-container {
@@ -151,7 +159,7 @@ body {
   padding: 1.5rem;
   border-radius: 12px;
   border: 1px solid var(--border-color);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 10px var(--shadow-dark);
   min-width: 300px;
   max-width: 48%;
 }
@@ -175,12 +183,12 @@ body {
 }
 
 .data-table th {
-  background-color: #34344d;
+  background-color: var(--bg-table-header);
   color: var(--text-secondary);
 }
 
 .data-table tbody tr:hover {
-  background-color: #2e2e44;
+  background-color: var(--bg-table-hover);
   transition: background-color 0.2s;
 }
 
@@ -191,9 +199,9 @@ body {
 }
 
 .grouping-buttons button {
-  background-color: #2d2d2d;
+  background-color: var(--neutral-gray);
   color: var(--accent-purple);
-  border: 1px solid #444;
+  border: 1px solid var(--neutral-border);
   padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
@@ -202,7 +210,7 @@ body {
 }
 
 .grouping-buttons button:hover {
-  background-color: #3a3a3a;
+  background-color: var(--neutral-gray-hover);
   color: white;
 }
 
