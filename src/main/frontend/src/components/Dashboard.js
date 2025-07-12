@@ -11,10 +11,13 @@ function Dashboard() {
   const [visibleCount, setVisibleCount] = useState(10);
   const [visibleItemAndComboCount, setVisibleItemAndComboCount] = useState(10);
   const [grouping, setGrouping] = useState("1h");
+  const [activeChart, setActiveChart] = useState("amount");
   let groupedData = [];
+  let groupedSalesCount = [];
 
   if (!loading && summary?.salesOverTime) {
     groupedData = groupSales(summary.salesOverTime, grouping);
+    groupedSalesCount = groupSalesCount(summary.salesOverTime, grouping);
   }
 
   useEffect(() => {
@@ -49,7 +52,25 @@ function Dashboard() {
         </div>
       </div>
       <div className="chart-section">
-        <h2>Sales Over Time</h2>
+        <div className="grouping-buttons">
+          <button
+            onClick={() => setActiveChart("amount")}
+            className={activeChart === "amount" ? "active" : ""}
+          >
+            Show Sales Amount
+          </button>
+          <button
+            onClick={() => setActiveChart("count")}
+            className={activeChart === "count" ? "active" : ""}
+          >
+            Show Sales Count
+          </button>
+        </div>
+        {activeChart === "amount" ? (
+          <h2>Sales Over Time</h2>
+        ) : (
+          <h2>Number of Sales Per Period</h2>
+        )}
         <div className="grouping-buttons">
           <button
             onClick={() => setGrouping("30m")}
@@ -70,43 +91,73 @@ function Dashboard() {
             1 day
           </button>
         </div>
-        <Line
-          data={{
-            labels: groupedData.map((pt) => pt.date),
-            datasets: [
-              {
-                label: "Sales (€)",
-                data: groupedData.map((pt) => pt.amount),
-                borderColor: "#9b59b6",
-                backgroundColor: "#9b59b622",
-                fill: true,
-                tension: 0.3,
-                pointRadius: 4,
-                pointHoverRadius: 6,
+        {activeChart === "amount" ? (
+          <Line
+            data={{
+              labels: groupedData.map((pt) => pt.date),
+              datasets: [
+                {
+                  label: "Sales (€)",
+                  data: groupedData.map((pt) => pt.amount),
+                  borderColor: "#9b59b6",
+                  backgroundColor: "#9b59b622",
+                  fill: true,
+                  tension: 0.3,
+                  pointRadius: 4,
+                  pointHoverRadius: 6,
+                },
+              ],
+            }}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: { labels: { color: "#f5f6fa" } },
               },
-            ],
-          }}
-          options={{
-            responsive: true,
-            plugins: {
-              legend: {
-                labels: {
-                  color: "#f5f6fa",
+              scales: {
+                x: { ticks: { color: "#aaa" }, grid: { color: "#333" } },
+                y: { ticks: { color: "#aaa" }, grid: { color: "#333" } },
+              },
+            }}
+          />
+        ) : (
+          <Line
+            data={{
+              labels: groupedSalesCount.map((pt) => pt.date),
+              datasets: [
+                {
+                  label: "Number of Sales",
+                  data: groupedSalesCount.map((pt) => pt.count),
+                  borderColor: "#9b59b6",
+                  backgroundColor: "#9b59b622",
+                  fill: true,
+                  tension: 0.3,
+                  pointRadius: 4,
+                  pointHoverRadius: 6,
+                },
+              ],
+            }}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: {
+                  labels: {
+                    color: "#f5f6fa",
+                  },
                 },
               },
-            },
-            scales: {
-              x: {
-                ticks: { color: "#aaa" },
-                grid: { color: "#333" },
+              scales: {
+                x: {
+                  ticks: { color: "#aaa" },
+                  grid: { color: "#333" },
+                },
+                y: {
+                  ticks: { color: "#aaa" },
+                  grid: { color: "#333" },
+                },
               },
-              y: {
-                ticks: { color: "#aaa" },
-                grid: { color: "#333" },
-              },
-            },
-          }}
-        />
+            }}
+          />
+        )}
       </div>
       <div className="charts-grid">
         <div className="chart-block">
@@ -348,20 +399,21 @@ function Dashboard() {
             ))}
           </tbody>
         </table>
-        {visibleCount < summary.transactions.length && (
-          <div className="load-more-container">
-            <button
-              onClick={() => setVisibleCount((prev) => prev + 10)}
-              className="load-more-button"
-            >
-              Load More
-            </button>
-          </div>
-        )}
       </div>
+      {visibleCount < summary.transactions.length && (
+        <div className="load-more-container">
+          <button
+            onClick={() => setVisibleCount((prev) => prev + 10)}
+            className="load-more-button"
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </div>
   );
 }
+
 function groupSales(sales, interval) {
   const buckets = {};
 
@@ -372,16 +424,16 @@ function groupSales(sales, interval) {
     if (interval === "30m") {
       const hour = date.getHours();
       const half = date.getMinutes() < 30 ? "00" : "30";
-      bucketKey = `${format(date, "yyyy-MM-dd")} ${hour
+      bucketKey = `${format(date, "dd-MM-yyyy")} ${hour
         .toString()
         .padStart(2, "0")}:${half}`;
     } else if (interval === "1h") {
-      bucketKey = `${format(date, "yyyy-MM-dd")} ${date
+      bucketKey = `${format(date, "dd-MM-yyyy")} ${date
         .getHours()
         .toString()
         .padStart(2, "0")}:00`;
     } else {
-      bucketKey = format(date, "yyyy-MM-dd");
+      bucketKey = format(date, "dd-MM-yyyy");
     }
 
     if (!buckets[bucketKey]) {
@@ -393,6 +445,84 @@ function groupSales(sales, interval) {
   return Object.entries(buckets)
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([key, amount]) => ({ date: key, amount }));
+}
+
+function groupSalesCount(sales, interval) {
+  const buckets = {};
+
+  if (interval === "1d") {
+    // Pre-fill all weekdays
+    [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ].forEach((day) => (buckets[day] = 0));
+  }
+
+  if (interval === "1h") {
+    // Pre-fill 24 hours
+    for (let h = 6; h < 21; h++) {
+      const hour = h.toString().padStart(2, "0");
+      buckets[`${hour}:00`] = 0;
+    }
+  }
+
+  if (interval === "30m") {
+    // Pre-fill 48 half-hour slots
+    for (let h = 6; h < 21; h++) {
+      const hour = h.toString().padStart(2, "0");
+      buckets[`${hour}:00`] = 0;
+      buckets[`${hour}:30`] = 0;
+    }
+  }
+
+  sales.forEach((pt) => {
+    const date = parseISO(pt.date);
+    let bucketKey;
+
+    if (interval === "30m") {
+      const hour = date.getHours();
+      const half = date.getMinutes() < 30 ? "00" : "30";
+      bucketKey = `${hour.toString().padStart(2, "0")}:${half}`;
+    } else if (interval === "1h") {
+      bucketKey = `${date.getHours().toString().padStart(2, "0")}:00`;
+    } else {
+      bucketKey = format(date, "EEEE");
+    }
+
+    if (!buckets[bucketKey]) {
+      buckets[bucketKey] = 0;
+    }
+    buckets[bucketKey] += 1;
+  });
+
+  // Sort keys by time or by weekday
+  let sortedKeys;
+  if (interval === "1d") {
+    sortedKeys = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
+  } else {
+    sortedKeys = Object.keys(buckets).sort((a, b) => {
+      // Sort time values like "13:30", "14:00" properly
+      return a.localeCompare(b);
+    });
+  }
+
+  return sortedKeys.map((key) => ({
+    date: key,
+    count: buckets[key] ?? 0,
+  }));
 }
 
 export default Dashboard;
