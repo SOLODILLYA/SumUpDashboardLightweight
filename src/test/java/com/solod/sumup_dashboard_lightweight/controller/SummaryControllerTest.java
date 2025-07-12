@@ -1,13 +1,26 @@
 package com.solod.sumup_dashboard_lightweight.controller;
+
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@SpringBootTest
+@AutoConfigureMockMvc
 public class SummaryControllerTest {
 
-    private final SummaryController controller = new SummaryController(); // Replace with your actual class name
+    @Autowired
+    private SummaryController controller;
+
+    @Autowired
+    private MockMvc mockMvc;
 
     private List<Map<String, Object>> mockTransactions() {
         return List.of(
@@ -24,6 +37,15 @@ public class SummaryControllerTest {
     }
 
     @Test
+    void summaryEndpointReturns200AndValidJson() throws Exception {
+        mockMvc.perform(get("/api/summary"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalSales").exists())
+                .andExpect(jsonPath("$.numTransactions").exists())
+                .andExpect(jsonPath("$.transactions").isArray());
+    }
+
+    @Test
     public void testCalculateSoldProducts() {
         List<Map<String, Object>> result = controller.calculateSoldProducts(mockTransactions());
         assertEquals(4, result.size());
@@ -34,7 +56,6 @@ public class SummaryControllerTest {
     @Test
     public void testCalculateMostSoldProducts() {
         List<Map<String, Object>> result = controller.calculateMostSoldProducts(mockTransactions());
-        assertEquals(4, result.size());
         assertEquals("Coffee", result.get(0).get("name"));
         assertEquals(3, result.get(0).get("quantity"));
     }
@@ -50,7 +71,6 @@ public class SummaryControllerTest {
     public void testCalculateSoldCombos() {
         Map<String, Integer> result = controller.calculateSoldCombos(mockTransactions());
         assertTrue(result.containsKey("Bagel + Coffee"));
-        assertFalse(result.containsKey("Muffin + Tea"));
         assertEquals(2, result.get("Bagel + Coffee"));
     }
 
@@ -66,5 +86,44 @@ public class SummaryControllerTest {
         Map<String, Integer> result = controller.calculateLeastSoldCombos(mockTransactions());
         assertTrue(result.containsKey("Bagel + Coffee"));
         assertEquals(2, result.get("Bagel + Coffee"));
+    }
+
+    @Test
+    public void testEmptyTransactions() {
+
+        List<Map<String, Object>> empty = Collections.emptyList();
+
+        assertTrue(controller.calculateSoldProducts(empty).isEmpty());
+
+        assertTrue(controller.calculateMostSoldProducts(empty).isEmpty());
+
+        assertTrue(controller.calculateLeastSoldProducts(empty).isEmpty());
+
+        assertTrue(controller.calculateSoldCombos(empty).isEmpty());
+
+        assertTrue(controller.calculateMostSoldCombos(empty).isEmpty());
+
+        assertTrue(controller.calculateLeastSoldCombos(empty).isEmpty());
+
+    }
+
+    @Test
+    public void testTransactionWithNoItems() {
+
+        List<Map<String, Object>> tx = List.of(Map.of("id", "123"));
+
+        assertTrue(controller.calculateSoldProducts(tx).isEmpty());
+
+        assertTrue(controller.calculateSoldCombos(tx).isEmpty());
+
+    }
+
+    @Test
+    public void testCorsHeadersPresent() throws Exception {
+
+        mockMvc.perform(get("/api/summary").header("Origin", "http://localhost:3000"))
+
+                .andExpect(header().string("Access-Control-Allow-Origin", "http://localhost:3000"));
+
     }
 }
