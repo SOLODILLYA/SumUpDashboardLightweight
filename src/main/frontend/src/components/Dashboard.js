@@ -3,7 +3,14 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Line, Pie } from "react-chartjs-2";
-import { format, parseISO, subDays, formatISO } from "date-fns";
+import {
+  format,
+  parseISO,
+  subDays,
+  formatISO,
+  startOfDay,
+  endOfDay,
+} from "date-fns";
 import "chart.js/auto";
 import "./Dashboard.css";
 
@@ -99,9 +106,7 @@ function Dashboard() {
           <DatePicker
             id="from-date"
             selected={new Date(startDate)}
-            onChange={(date) =>
-              setStartDate(date.toISOString().slice(0, 10) + "T00:00:00")
-            }
+            onChange={(date) => setStartDate(formatISO(startOfDay(date)))}
             dateFormat="dd-MM-yyyy"
             className="custom-datepicker"
           />
@@ -112,9 +117,7 @@ function Dashboard() {
           <DatePicker
             id="to-date"
             selected={new Date(endDate)}
-            onChange={(date) =>
-              setEndDate(date.toISOString().slice(0, 10) + "T23:59:59")
-            }
+            onChange={(date) => setEndDate(formatISO(endOfDay(date)))}
             dateFormat="dd-MM-yyyy"
             className="custom-datepicker"
           />
