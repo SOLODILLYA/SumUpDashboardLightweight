@@ -1,1451 +1,1206 @@
 [
   {
     "id": "tx0001",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-22T02:18",
+    "amount": 10.4,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Cappuccino",
+        "price": 3.5,
+        "quantity": 1
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 2.3,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0002",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-21T05:44",
+    "amount": 19.0,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Hot Chocolate",
+        "price": 3.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0003",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-18T03:57",
+    "amount": 13.1,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Bagel",
+        "price": 2.6,
+        "quantity": 3
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Smoothie",
+        "price": 3.5,
+        "quantity": 2
       }
     ]
   },
   {
     "id": "tx0004",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-17T07:30",
+    "amount": 12.8,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
         "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Muffin",
+        "price": 2.8,
+        "quantity": 2
+      },
+      {
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0005",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-23T02:38",
+    "amount": 11.6,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Muffin",
+        "price": 2.8,
+        "quantity": 2
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0006",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-18T02:53",
+    "amount": 8.9,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "price": 2.3,
+        "quantity": 1
       },
       {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0007",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-20T04:55",
+    "amount": 11.4,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       },
       {
         "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "price": 3.2,
+        "quantity": 3
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0008",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-20T07:16",
+    "amount": 17.6,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Hot Chocolate",
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 2.3,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0009",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-22T04:33",
+    "amount": 23.6,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
         "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "price": 2.5,
+        "quantity": 3
+      },
+      {
+        "name": "Smoothie",
+        "price": 3.5,
+        "quantity": 2
       },
       {
         "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "price": 3.2,
+        "quantity": 3
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0010",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-21T10:04",
+    "amount": 10.6,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0011",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-20T12:10",
+    "amount": 13.9,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
         "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "price": 3.2,
+        "quantity": 3
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       },
       {
         "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Espresso",
+        "price": 2.5,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0012",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-18T08:17",
+    "amount": 6.5,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Croissant",
+        "price": 2.2,
+        "quantity": 3
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 2.3,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0013",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-20T12:09",
+    "amount": 12.2,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Flat White",
+        "price": 3.6,
+        "quantity": 3
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
       },
       {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Bagel",
+        "price": 2.6,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0014",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-18T03:21",
+    "amount": 27.2,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Orange Juice",
+        "price": 3.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
+      },
+      {
+        "name": "Cappuccino",
+        "price": 3.5,
+        "quantity": 1
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 2.3,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0015",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-18T11:45",
+    "amount": 6.3,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 2.3,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0016",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-19T03:24",
+    "amount": 28.4,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
+        "name": "Smoothie",
+        "price": 3.5,
+        "quantity": 2
+      },
+      {
+        "name": "Cappuccino",
+        "price": 3.5,
+        "quantity": 1
+      },
+      {
         "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "price": 2.5,
+        "quantity": 3
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Muffin",
+        "price": 2.8,
+        "quantity": 2
       }
     ]
   },
   {
     "id": "tx0017",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-21T07:18",
+    "amount": 7.6,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Flat White",
+        "price": 3.6,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0018",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-17T03:51",
+    "amount": 18.2,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Flat White",
+        "price": 3.6,
+        "quantity": 3
       },
       {
         "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0019",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-19T04:08",
+    "amount": 17.1,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
         "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "price": 2.5,
+        "quantity": 3
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "price": 2.3,
+        "quantity": 1
       },
       {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0020",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-22T12:06",
+    "amount": 11.0,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Scone",
+        "price": 2.3,
+        "quantity": 1
       },
       {
         "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.2,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0021",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-20T07:35",
+    "amount": 10.1,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Hot Chocolate",
+        "price": 3.0,
+        "quantity": 1
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "price": 2.3,
+        "quantity": 1
       },
       {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Espresso",
+        "price": 2.5,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0022",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-21T03:22",
+    "amount": 31.2,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Flat White",
+        "price": 3.6,
+        "quantity": 3
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Smoothie",
+        "price": 3.5,
+        "quantity": 2
       },
       {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Muffin",
+        "price": 2.8,
+        "quantity": 2
       }
     ]
   },
   {
     "id": "tx0023",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-20T08:31",
+    "amount": 23.5,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       },
       {
         "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Smoothie",
+        "price": 3.5,
+        "quantity": 2
       }
     ]
   },
   {
     "id": "tx0024",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-19T06:40",
+    "amount": 20.0,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Flat White",
+        "price": 3.6,
+        "quantity": 3
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Bagel",
+        "price": 2.6,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0025",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-19T12:22",
+    "amount": 23.7,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Smoothie",
+        "price": 3.5,
+        "quantity": 2
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Muffin",
+        "price": 2.8,
+        "quantity": 2
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Hot Chocolate",
+        "price": 3.0,
+        "quantity": 1
       },
       {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0026",
-    "date": "2025-07-06T13:15",
+    "date": "2025-07-18T12:01",
     "amount": 19.5,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Cappuccino",
+        "price": 3.5,
+        "quantity": 1
       },
       {
         "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0027",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-21T08:25",
+    "amount": 19.6,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Flat White",
+        "price": 3.6,
+        "quantity": 3
       },
       {
         "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Bagel",
+        "price": 2.6,
+        "quantity": 3
+      },
+      {
+        "name": "Croissant",
+        "price": 2.2,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0028",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-18T10:07",
+    "amount": 25.9,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Iced Coffee",
+        "price": 3.2,
+        "quantity": 3
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Smoothie",
+        "price": 3.5,
+        "quantity": 2
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "price": 2.3,
+        "quantity": 1
       },
       {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Cappuccino",
+        "price": 3.5,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0029",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-19T02:25",
+    "amount": 9.0,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Cappuccino",
+        "price": 3.5,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0030",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-21T11:39",
+    "amount": 22.2,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
       },
       {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Bagel",
+        "price": 2.6,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0031",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-18T02:31",
+    "amount": 10.1,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Muffin",
+        "price": 2.8,
+        "quantity": 2
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Cappuccino",
+        "price": 3.5,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0032",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-19T06:18",
+    "amount": 13.5,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Orange Juice",
+        "price": 3.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Flat White",
+        "price": 3.6,
+        "quantity": 3
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 2.3,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0033",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-23T04:16",
+    "amount": 19.7,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "price": 2.3,
+        "quantity": 1
       },
       {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Muffin",
+        "price": 2.8,
+        "quantity": 2
+      },
+      {
+        "name": "Smoothie",
+        "price": 3.5,
+        "quantity": 2
+      },
+      {
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0034",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-22T09:02",
+    "amount": 7.2,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       },
       {
         "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.2,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0035",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-19T05:46",
+    "amount": 28.6,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Orange Juice",
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
+      },
+      {
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       },
       {
         "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.2,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0036",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-23T02:20",
+    "amount": 18.6,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Flat White",
+        "price": 3.6,
+        "quantity": 3
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0037",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-20T07:35",
+    "amount": 25.6,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Smoothie",
+        "price": 3.5,
+        "quantity": 2
       },
       {
         "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "price": 3.2,
+        "quantity": 3
       },
       {
         "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Hot Chocolate",
+        "price": 3.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0038",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-21T05:13",
+    "amount": 14.2,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Hot Chocolate",
+        "price": 3.0,
+        "quantity": 1
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Croissant",
+        "price": 2.2,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0039",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-19T10:56",
+    "amount": 17.2,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Orange Juice",
+        "price": 3.0,
+        "quantity": 1
       },
       {
         "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "price": 3.2,
+        "quantity": 3
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 2.3,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0040",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-20T04:37",
+    "amount": 11.3,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Cappuccino",
+        "price": 3.5,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Bagel",
+        "price": 2.6,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0041",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-19T02:50",
+    "amount": 12.5,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
         "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "price": 2.5,
+        "quantity": 3
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Toast",
+        "price": 2.0,
+        "quantity": 1
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0042",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-19T02:46",
+    "amount": 15.2,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Hot Chocolate",
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       },
       {
         "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.2,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0043",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-20T02:00",
+    "amount": 14.0,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Tea",
+        "price": 2.0,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Cold Brew",
+        "price": 3.0,
+        "quantity": 1
       },
       {
         "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.0,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0044",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-20T02:24",
+    "amount": 16.0,
     "paymentType": "cash",
-    "status": "paid",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
         "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Cappuccino",
+        "price": 3.5,
+        "quantity": 1
       }
     ]
   },
   {
     "id": "tx0045",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-18T08:12",
+    "amount": 9.8,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "name": "Hot Chocolate",
+        "price": 3.0,
+        "quantity": 1
       },
       {
         "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 3.0,
+        "quantity": 1
+      },
+      {
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0046",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-20T03:46",
+    "amount": 22.2,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Flat White",
+        "price": 3.6,
+        "quantity": 3
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0047",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-17T05:53",
+    "amount": 13.1,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
+        "price": 2.3,
+        "quantity": 1
       },
       {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
+      },
+      {
+        "name": "Smoothie",
+        "price": 3.5,
+        "quantity": 2
       }
     ]
   },
   {
     "id": "tx0048",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
+    "date": "2025-07-19T01:55",
+    "amount": 9.4,
+    "paymentType": "card",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Muffin",
+        "price": 2.8,
+        "quantity": 2
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
-      },
-      {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0049",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
-    "paymentType": "cash",
-    "status": "paid",
+    "date": "2025-07-22T12:06",
+    "amount": 21.0,
+    "paymentType": "card",
+    "status": "refunded",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
-      },
-      {
         "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "price": 3.2,
+        "quantity": 3
       },
       {
-        "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "name": "Latte",
+        "price": 3.8,
+        "quantity": 3
       }
     ]
   },
   {
     "id": "tx0050",
-    "date": "2025-07-06T13:15",
-    "amount": 19.5,
+    "date": "2025-07-23T02:07",
+    "amount": 20.2,
     "paymentType": "cash",
     "status": "paid",
     "items": [
       {
-        "name": "Espresso",
-        "quantity": 1,
-        "price": 2.5
+        "name": "Cappuccino",
+        "price": 3.5,
+        "quantity": 1
       },
       {
-        "name": "Iced Coffee",
-        "quantity": 2,
-        "price": 3.2
+        "name": "Croissant",
+        "price": 2.2,
+        "quantity": 3
+      },
+      {
+        "name": "Bagel",
+        "price": 2.6,
+        "quantity": 3
       },
       {
         "name": "Scone",
-        "quantity": 2,
-        "price": 2.3
-      },
-      {
-        "name": "Orange Juice",
-        "quantity": 2,
-        "price": 3.0
+        "price": 2.3,
+        "quantity": 1
       }
     ]
   }
