@@ -3,9 +3,8 @@ import "./Login.css";
 
 const LoginPage = () => {
   const handleLogin = () => {
-    window.location.href = "https://web.sumup.com/login";
+    window.location.href = "http://localhost:8080/api/sumup/login";
   };
-
   return (
     <div className="login-page">
       <div className="login-card">

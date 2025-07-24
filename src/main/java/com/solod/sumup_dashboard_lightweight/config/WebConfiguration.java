@@ -15,7 +15,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("redirect:/sumup/dashboard");
+        registry.addViewController("/").setViewName("redirect:/login");
     }
 
     @Override

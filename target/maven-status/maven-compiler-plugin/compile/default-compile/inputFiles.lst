@@ -1,6 +1,8 @@
 /Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/SumupDashboardLightweightApplication.java
+/Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/config/SumUpConfig.java
 /Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/config/WebConfiguration.java
 /Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/config/WebSecurityConfig.java
+/Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/controller/SumUpAuthController.java
 /Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/controller/SummaryController.java
 /Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/controller/TransactionController.java
 /Users/solod/GitHub/SumUpDashboardLightweight/src/main/java/com/solod/sumup_dashboard_lightweight/dto/Transaction.java
