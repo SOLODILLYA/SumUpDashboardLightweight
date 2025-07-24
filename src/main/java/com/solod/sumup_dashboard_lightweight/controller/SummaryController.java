@@ -30,12 +30,17 @@ import java.util.stream.Collectors;
 public class SummaryController {
         @GetMapping("/api/summary")
         public Map<String, Object> getSummary(
+                        @RequestParam("token") String accessToken,
                         @RequestParam(value = "start", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
-
                         @RequestParam(value = "end", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
+
+                System.out.println("🔍 token param: " + accessToken);
+                if (accessToken == null) {
+                        throw new IllegalArgumentException("Token was not provided in the query!");
+                }
                 LocalDateTime from = (start != null) ? start : LocalDateTime.now().minusDays(7);
                 LocalDateTime to = (end != null) ? end : LocalDateTime.now();
-                List<Map<String, Object>> allTransactions = getAllTransactions("your_api_key_here",
+                List<Map<String, Object>> allTransactions = getAllTransactions(accessToken,
                                 from.toString(), to.toString());
                 System.out.println("Transactions fetched: " + allTransactions.size());
                 List<Map<String, Object>> transactions = allTransactions.stream().collect(Collectors.toList());
@@ -281,51 +286,54 @@ public class SummaryController {
                 return allTransactions;
         }
 
-        // Stub method to simulate API call — to be implemented
         public static List<Map<String, Object>> getTransactions(String apiKey, String startDate, String endDate,
                         int page) {
-                // List<Map<String, Object>> transactions = new ArrayList<>();
+                List<Map<String, Object>> transactions = new ArrayList<>();
 
-                // try {
-                // String url =
-                // String.format("https://api.sumup.com/v0.1/me/transactions?from=%s&to=%s&page=%d",
-                // startDate, endDate, page);
+                try {
+                        String url = String.format("https://api.sumup.com/v0.1/me/transactions?from=%s&to=%s&page=%d",
+                                        startDate, endDate, page);
 
-                // HttpRequest request = HttpRequest.newBuilder()
-                // .uri(URI.create(url))
-                // .header("Authorization", "Bearer " + apiKey)
-                // .header("Accept", "application/json")
-                // .GET()
-                // .build();
+                        HttpRequest request = HttpRequest.newBuilder()
+                                        .uri(URI.create(url))
+                                        .header("Authorization", "Bearer " + apiKey)
+                                        .header("Accept", "application/json")
+                                        .GET()
+                                        .build();
 
-                // HttpClient client = HttpClient.newHttpClient();
-                // HttpResponse<String> response = client.send(request,
-                // HttpResponse.BodyHandlers.ofString());
+                        HttpClient client = HttpClient.newHttpClient();
+                        HttpResponse<String> response = client.send(request,
+                                        HttpResponse.BodyHandlers.ofString());
 
-                // if (response.statusCode() == 200) {
-                // String json = response.body();
+                        if (response.statusCode() == 200) {
+                                String json = response.body();
 
-                // // Initialize ObjectMapper (from Jackson library)
-                // ObjectMapper objectMapper = new ObjectMapper();
+                                // Initialize ObjectMapper (from Jackson library)
+                                ObjectMapper objectMapper = new ObjectMapper();
 
-                // Map<String, Object> jsonMap = objectMapper.readValue(json, Map.class);
-                // Object items = jsonMap.get("items");
+                                Map<String, Object> jsonMap = objectMapper.readValue(json, Map.class);
+                                Object items = jsonMap.get("items");
 
-                // if (items instanceof List) {
-                // transactions = (List<Map<String, Object>>) items;
-                // }
+                                if (items instanceof List) {
+                                        transactions = (List<Map<String, Object>>) items;
+                                }
 
-                // } else {
-                // System.err.println("Failed to fetch transactions: " + response.statusCode() +
-                // " "
-                // + response.body());
-                // }
+                        } else {
+                                System.err.println("Failed to fetch transactions: " + response.statusCode() +
+                                                " "
+                                                + response.body());
+                        }
 
-                // } catch (IOException | InterruptedException e) {
-                // e.printStackTrace();
-                // }
+                } catch (IOException | InterruptedException e) {
+                        e.printStackTrace();
+                }
 
-                // return transactions;
+                return transactions;
+        }
+
+        // Stub method to simulate API call
+        public static List<Map<String, Object>> getTransactionsTest(String apiKey, String startDate, String endDate,
+                        int page) {
                 List<Map<String, Object>> transactions = new ArrayList<>();
 
                 try {
@@ -344,10 +352,8 @@ public class SummaryController {
                         if (response.statusCode() == 200) {
                                 String json = response.body();
 
-                                // Parse JSON using Jackson
                                 ObjectMapper objectMapper = new ObjectMapper();
 
-                                // Read the JSON string as a List of Maps
                                 transactions = objectMapper.readValue(
                                                 json,
                                                 new TypeReference<List<Map<String, Object>>>() {

@@ -23,6 +23,8 @@ function Dashboard() {
   const [activeChart, setActiveChart] = useState("amount");
   const [startDate, setStartDate] = useState(formatISO(subDays(new Date(), 7))); // 7 days ago
   const [endDate, setEndDate] = useState(formatISO(new Date())); // today
+  const params = new URLSearchParams(window.location.search);
+  const tokenFromUrl = params.get("token");
   const commonLineStyle = {
     borderColor: "#9b59b6",
     backgroundColor: "#9b59b622",
@@ -62,6 +64,7 @@ function Dashboard() {
     axios
       .get("http://localhost:8080/api/summary", {
         params: {
+          token: tokenFromUrl,
           start: isoStart,
           end: isoEnd,
         },
@@ -85,6 +88,7 @@ function Dashboard() {
     axios
       .get("http://localhost:8080/api/summary", {
         params: {
+          token: tokenFromUrl,
           start: isoStart,
           end: isoEnd,
         },
