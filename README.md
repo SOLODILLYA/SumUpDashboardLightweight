@@ -69,7 +69,7 @@ Now, add your SumUp credentials to the project.
     sumup.client.secret=YOUR_CLIENT_SECRET_HERE
     sumup.redirect.uri=http://localhost:8080/api/sumup/callback
     ```
-
+3. If you want to test the application with mock data and no SumUp login, use `getAllTransactionsTest()` instead of `getAllTransactions()` used in `src/main/java/com/solod/sumup_dashboard_lightweight/controller/SummaryController.java`. 
 ### 3. Run the Application
 
 You will need two separate terminal windows to run the backend and frontend servers simultaneously.
@@ -91,3 +91,7 @@ Open your web browser and navigate to:
 **http://localhost:8080**
 
 You will see the login page. Click the "Login using SumUp" button to start the authentication process and access your dashboard!
+
+For mock data testing: **http://localhost:8080/sumup/dashboard?token=123** will bring you to the dashboard with mock data. 
+
+**IMPORTANT:** Follow steps stated in **Configure the Backend** for the dashboard to work as expected with mock data.
