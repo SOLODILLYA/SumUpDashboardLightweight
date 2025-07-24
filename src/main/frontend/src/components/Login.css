@@ -73,6 +73,6 @@ html {
   position: absolute;
   inset: 0;
   background: url("../../public/background.png") center center / cover no-repeat;
-  filter: brightness(0.4); /* Dim the image */
+  filter: brightness(0.4);
   z-index: 0;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Login.css"; // Adjust path as needed
+import "./Login.css";
 
 const LoginPage = () => {
   const handleLogin = () => {
