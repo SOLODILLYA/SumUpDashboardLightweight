@@ -34,7 +34,6 @@ public class SummaryController {
                         @RequestParam(value = "start", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
                         @RequestParam(value = "end", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
 
-                System.out.println("🔍 token param: " + accessToken);
                 if (accessToken == null) {
                         throw new IllegalArgumentException("Token was not provided in the query!");
                 }
@@ -42,9 +41,7 @@ public class SummaryController {
                 LocalDateTime to = (end != null) ? end : LocalDateTime.now();
                 List<Map<String, Object>> allTransactions = getAllTransactions(accessToken,
                                 from.toString(), to.toString());
-                System.out.println("Transactions fetched: " + allTransactions.size());
                 List<Map<String, Object>> transactions = allTransactions.stream().collect(Collectors.toList());
-                System.out.println("Filtered transactions: " + transactions.size());
                 Map<String, Double> salesMap = transactions.stream()
                                 .filter(tx -> tx.get("date") != null)
                                 .collect(Collectors.groupingBy(
@@ -90,7 +87,6 @@ public class SummaryController {
 
         }
 
-        // TODO: Remove this test endpoint in production
         @GetMapping("/api/test-items")
         public List<Map<String, Object>> testItems() {
                 return getAllTransactions("dummy_key", "2025-07-01T00:00", "2025-07-31T23:59");
@@ -269,8 +265,7 @@ public class SummaryController {
 
                 List<Map<String, Object>> allTransactions = new ArrayList<>();
                 int page = 1;
-
-                while (true && page < 2) { // remove 'page < 2' to fetch more later
+                while (true) { // Limit to 2 pages for testing if using getTransactionsTest (&& page<=2)
                         List<Map<String, Object>> transactions = getTransactions(apiKey, startDate, endDate, page);
 
                         if (transactions == null || transactions.isEmpty()) {
@@ -282,7 +277,6 @@ public class SummaryController {
                         page++;
                 }
 
-                System.out.println("Total transactions collected: " + allTransactions.size());
                 return allTransactions;
         }
 
@@ -308,7 +302,6 @@ public class SummaryController {
                         if (response.statusCode() == 200) {
                                 String json = response.body();
 
-                                // Initialize ObjectMapper (from Jackson library)
                                 ObjectMapper objectMapper = new ObjectMapper();
 
                                 Map<String, Object> jsonMap = objectMapper.readValue(json, Map.class);
@@ -337,7 +330,6 @@ public class SummaryController {
                 List<Map<String, Object>> transactions = new ArrayList<>();
 
                 try {
-                        // This simulates pagination params if needed later
                         String url = "http://localhost:8080/api/transactions";
 
                         HttpRequest request = HttpRequest.newBuilder()
